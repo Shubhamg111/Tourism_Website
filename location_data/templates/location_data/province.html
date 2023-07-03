@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+<title>{{abc.province}}</title>
+{% endblock %}
+
+
+{% block main-content %}
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+            {% for msg in messages %}
+
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success">
+                {{msg}}
+            </div>
+            {% endif %}
+
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="alert alert-danger">
+                {{msg}}
+            </div>
+            {% endif %}
+
+            {% endfor %}
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Province</th>
+                    <th>District</th>
+                    <th> district Description</th>
+                    <th> district image</th>
+                    <th>Action</th>
+                   
+                </tr>
+                {% for data in province_inf %}
+                <tr>
+                    <td>{{data.province}}</td>
+                    <td><a href="/location/{{data.district_name}}/" class="btn btn-primary">{{data.district_name}}</a></td>
+                    <td>{{data.district_desc}}</td>
+                    <td>
+                        <img src="/{{data.district_images}}" alt="" width="100"> <!-- its to be noted taht the province_inf is fetchinf data from Location which has district as an attribute so we are getting the image inside the district which is inside the location-->
+                    </td>
+                    <td>
+                        <a href="/updatedistrict/{{data.id}}/{{data.province}}" class="btn btn-primary"><i class="fa-regular fa-pen-to-square"></i></a>&nbsp;&nbsp;
+                        <a href="/deletedistrict/{{data.id}}/{{data.province}}" class="btn btn-danger" onclick="return confirm('Are you sure want to delete this district?')"><i class="fa-solid fa-trash"></i></a>
+                    </td>
+                    
+                    
+                    
+
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- <img src="{% static 'images/a.jpg' %}" alt="" width="400"> -->
+    
+{% endblock %}
+    

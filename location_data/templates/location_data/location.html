@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+<title>Location</title>
+{% endblock %}
+
+
+{% block main-content %}
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+            {% for msg in messages %}
+
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success">
+                {{msg}}
+            </div>
+            {% endif %}
+
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="alert alert-danger">
+                {{msg}}
+            </div>
+            {% endif %}
+
+            {% endfor %}
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>province</th>
+                    <th>District</th>
+                    <th>location name</th>
+                    <th>Description</th>
+                    <th>location image</th>
+                    <th>best season</th>
+                    <th>Event</th>
+                    <th>Action</th>
+                </tr>
+                {% for location in location_inf %}
+                
+                <tr>
+                    <td><a href="/province/{{location.district.province}}" class="btn btn-primary">{{location.district.province}}</a></td>
+                    <td>{{location.district.district_name}}</td>
+                    <td>{{location.location_name}}</td>
+                    <td>{{location.location_desc}}</td>
+                    <td>
+                        
+                        <img src="/{{location.location_image}}" alt="" width="100">
+                        
+                    </td>
+                    <td>{{location.best_season}}</td>
+                    <td>{{location.event}}</td>
+                    <td>
+                        <a href="/updatelocation/{{location.district.district_name}}/{{location.id}}" class="btn btn-primary"><i class="fa-regular fa-pen-to-square"></i></a>&nbsp;&nbsp;
+                        <a href="/deletelocation/{{location.district.district_name}}/{{location.id}}" class="btn btn-danger" onclick="return confirm('Are you sure want to delete this Location?')"><i class="fa-solid fa-trash"></i></a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- <img src="{% static 'images/a.jpg' %}" alt="" width="400"> -->
+    
+{% endblock %}
+    

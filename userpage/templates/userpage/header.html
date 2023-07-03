@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    header {
+      background-color: transparent;
+      color: white;
+      position: fixed;
+      z-index: 1;
+      width: 100%;
+      transition: 1s;
+    }
+
+    .navbarbg {
+      background-color: #18445d;
+      color: #000;
+    }
+
+    .nav li {
+      padding: 0 5px;
+      font-size: 16px;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+
+    }
+
+    .nav li a {
+      color: rgb(236, 236, 236);
+    }
+
+    .nav li a:hover,
+    .dropdown:hover {
+      color: #16d4ab;
+      transition: all .5s;
+      transform: scale(1.1);
+    }
+
+    .dropdown {
+      z-index: 999;
+    }
+
+    .dropdown-menu {
+
+      width: max-content;
+      height: max-content;
+    }
+  </style>
+</head>
+
+<body>
+  <header id='navbar'
+    class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between px-3 nav-bar">
+    <div class="col-md-3 mb-2 mb-md-0">
+      <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none align-items-center">
+        <img src="/static/images/logo.png" alt="images" style="width: 70px;">
+        <span class='fs-3 text-light'>Trip Wonder</span>
+      </a>
+    </div>
+
+    <ul class="nav col-12 col-md-auto mb-2 text-decoration-none justify-content-center align-items-center">
+      <li><a href="/" class="nav-link px-2">Home</a></li>
+      <li class='dropdown-center'><a class="text-decoration-none " href="#" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Places to go</a>
+        <ul class="dropdown-menu bg-light" style="padding: 10% !important;">
+
+
+
+          <div class="row row-cols-md-7 mx-4 g-4 flex-wrap">
+            {% for province in provinces %}
+            <div class="col">
+              <div class="" style="width: 150px;">
+                <p class="fs-6 bold" style="font-weight: 600;">{{province.province_name}}</p>
+                <img src="/{{province.province_images}}" class="card-img-top shadow" alt="image" height="100px"
+                  width="100px">
+                <hr>
+                <ul style="color: goldenrod;">
+                  <li><a class="dropdown-item text-primary" href="#">Action</a></li>
+                  <li><a class="dropdown-item text-primary" href="#">Another action</a></li>
+                  <li><a class="dropdown-item text-primary" href="#">Something </a></li>
+                  <li><a class="dropdown-item text-primary" href="#">Action</a></li>
+                  <li><a class="dropdown-item text-primary" href="#">Another action</a></li>
+                  <li><a class="dropdown-item text-primary" href="#">Something </a></li>
+                </ul>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          </div>
+
+        </ul>
+      </li>
+
+      <li class='dropdown-center mx-2'><a class="text-decoration-none " href="#" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Things to do</a>
+        <ul class="dropdown-menu bg-light">
+          <div>
+
+            <div class="d-flex justify-content-center mx-5  flex-wrap">
+              <div class="px-4" style="width: 250px; ">
+                <p class="fs-3 bold" style="font-weight: 600;">Adventure</p>
+                <img src="static/images/Adventure.jpeg" class="card-img-top shadow" alt="image" height="100px"
+                  width="100px">
+                <hr>
+                <div class="">
+                  <ul style="color: goldenrod;">
+                    <li><a class="dropdown-item text-primary" href="#">TREKKING</a></li>
+                    <li><a class="dropdown-item text-primary" href="#">ZIP FLYING</a></li>
+                    <li><a class="dropdown-item text-primary" href="#">SKY DIVING</a></li>
+                    <li><a class="dropdown-item text-primary" href="#">TREKKING</a></li>
+                    <li><a class="dropdown-item text-primary" href="#">ZIP FLYING</a></li>
+                    <li><a class="dropdown-item text-primary" href="#">SKY DIVING</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="px-4" style="width: 250px; ">
+                <p class="fs-3 bold" style="font-weight: 600;">Nature</p>
+                <img src="static/images/Nature.jpeg" class="card-img-top shadow" alt="image" height="100px"
+                  width="100px">
+                <hr>
+                <ul style="color: goldenrod;">
+
+                  <li><a class="dropdown-item text-primary" href="#">NATIONAL PARKS</a></li>
+                  <li><a class="dropdown-item text-primary" href="#">JUNGLE DISCOVERY</a></li>
+                  <li><a class="dropdown-item text-primary" href="#">MOUNTAIN VIEWING </a></li>
+                  <li><a class="dropdown-item text-primary" href="#">JUNGLE DISCOVERY</a></li>
+                  <li><a class="dropdown-item text-primary" href="#">MOUNTAIN VIEWING </a></li>
+                </ul>
+              </div>
+              <div class="px-4" style="width: 250px; ">
+                <p class="fs-3 bold" style="font-weight: 600;">Culture</p>
+                <img src="static/images/Culture.jpeg" class="card-img-top shadow" alt="image" height="100px"
+                  width="100px">
+                <hr>
+                <ul style="color: goldenrod;">
+                  <li><a class="dropdown-item text-primary" href="#">VILLAGE TOURS</a></li>
+                  <li><a class="dropdown-item text-primary" href="#"> CULTURAL TOURS</a></li>
+                  <li><a class="dropdown-item text-primary" href="#">FOOD & CULINARY </a></li>
+                  <li><a class="dropdown-item text-primary" href="#">FOOD & CULINARY </a></li>
+
+                </ul>
+              </div>
+              <div class="px-4" style="width: 250px; ">
+                <p class="fs-3 bold" style="font-weight: 600;">Others</p>
+                <img src="static/images/Others.jpg" class="card-img-top shadow" alt="image" height="100px"
+                  width="100px">
+                <hr>
+                <ul style="color: goldenrod;">
+                  <li><a class="dropdown-item text-primary" href="#">MEDITATION</a></li>
+                  <li><a class="dropdown-item text-primary" href="#">DESTINATION WEDDING</a></li>
+                  <li><a class="dropdown-item text-primary" href="#">PILGRIMAGE TOURS</a></li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </ul>
+      </li>
+
+      <li><a href="#" class="nav-link px-2">Plan Your Trip</a></li>
+      <li><a href="#About" class="nav-link px-2">About</a></li>
+      <li><a href="/login" class="nav-link px-2">Login</a></li>
+
+    </ul>
+
+    <div class="col-md-3 text-end">
+      <button class="btn btn-outline-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight"><i class='bx bx-bell'></i></button>
+
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasRightLabel">News And Notifications</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="">
+          
+        </div>
+      </div>
+      <button type="button" class="btn btn-outline-warning"><i class='bx bx-globe'></i></button>
+    </div>
+  </header>
+
+  <script>
+    const headerbgchange = () => {
+      var navbar = document.getElementById('navbar');
+      var scrollvalue = window.scrollY;
+      if (scrollvalue > 200) {
+        navbar.classList.add('navbarbg');
+      } else {
+        navbar.classList.remove('navbarbg');
+      }
+    }
+    window.addEventListener('scroll', headerbgchange)
+  </script>
+</body>
+
+</html>
